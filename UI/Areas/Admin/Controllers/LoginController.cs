@@ -36,6 +36,7 @@ namespace UI.Areas.Admin.Controllers
                     FormsAuthentication.SetAuthCookie(user.ID.ToString(), false);
                     Session.Add("UserInfo", session);
                     Session.Add("Id", user.ID);
+                    LogBLL.AddLog(1, "Login", 12, session);
                     return RedirectToAction("Index", "Post");
                 }
 

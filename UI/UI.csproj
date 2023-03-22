@@ -90,6 +90,7 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\PostList.cshtml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

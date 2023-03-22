@@ -1,0 +1,25 @@
+﻿@model System.Collections.Generic.List<DTO.PostDTO>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <h3>Post: @item.Title</h3>
+            <p>Content: @item.ShortContent</p>
+            <p>Link: @item.SeoLink</p>
+        </div>
+    }
+</div>
+</body>
+</html>
