@@ -1,0 +1,15 @@
+﻿@model DTO.UserDTO
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div>
+    <form method="post">
+        @Html.ValidationMessageFor(x => x.Username)
+        <input type="text" name="username" placeholder="Username"/>
+        @Html.ValidationMessageFor(x => x.Password)
+        <input type="password" name="password" placeholder="Password"/>
+        <input type="submit" value="Login"/>
+    </form>
+</div>

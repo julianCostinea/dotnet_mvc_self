@@ -1,0 +1,22 @@
+﻿@using DTO
+@{
+    SessionDTO session = (SessionDTO)Session["UserInfo"];
+}
+@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Post List</title>
+</head>
+<body>
+<div>
+    Hey there <strong>@session.Namesurname</strong>
+</div>
+</body>
+</html>
