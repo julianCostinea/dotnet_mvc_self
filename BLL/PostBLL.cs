@@ -41,5 +41,10 @@ namespace BLL
         {
             dao.DeletePost(id, session);
         }
+
+        public PostDTO GetPostWithID(int id)
+        {
+            return dao.GetPostWithID(id);
+        }
     }
 }

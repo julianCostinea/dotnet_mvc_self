@@ -52,5 +52,13 @@ namespace UI.Areas.Admin.Controllers
             bll.DeletePost(id, session);
             return RedirectToAction("PostList", "Post");
         }
+        
+        public ActionResult UpdatePost(int id)
+        {
+            PostDTO model = new PostDTO();
+            model = bll.GetPostWithID(id);
+            model.isUpdate = true;
+            return View(model);
+        }
     }
 }

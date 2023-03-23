@@ -57,5 +57,19 @@ namespace DAL
                 db.SaveChanges();
             }
         }
+
+        public PostDTO GetPostWithID(int id)
+        {
+            using (POSTDATASELFEntities db = new POSTDATASELFEntities())
+            {
+                Post post = db.Posts.FirstOrDefault(x => x.ID == id);
+                PostDTO dto = new PostDTO();
+                dto.ID = post.ID;
+                dto.Title = post.Title;
+                dto.ShortContent = post.ShortContent;
+                dto.SeoLink = post.SeoLink;
+                return dto;
+            }
+        }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model DTO.PostDTO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Update Post</title>
+</head>
+<body>
+<div>
+      @if (ViewBag.ProcessState == "Empty")
+          {
+              <div style="color: red">
+                  <strong>Error!! Please fill the neccessary areas</strong>
+              </div>
+          }
+          @if (ViewBag.ProcessState == "Error")
+              {
+                  <div style="color: red">
+                      <strong>Error! Something went wrong</strong>
+                  </div>
+              }
+          @if (ViewBag.ProcessState == "Success")
+              {
+                  <div style="color: green">
+                      <strong>Added</strong>
+                  </div>
+              }
+          <div>
+              @using (Html.BeginForm("UpdatePost", "Post", FormMethod.Post))
+              {
+                  @Html.Partial("PostForm")
+              }
+          </div>
+</div>
+</body>
+</html>

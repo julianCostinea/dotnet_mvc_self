@@ -17,5 +17,7 @@ namespace DTO
 
         [Required(ErrorMessage = "Please enter a seo link")]
         public string SeoLink { get; set; }
+        
+        public bool isUpdate { get; set; } = false;
     }
 }
