@@ -18,6 +18,16 @@
             <h3>Post: @item.Title</h3>
             <p>Content: @item.ShortContent</p>
             <p>Link: @item.SeoLink</p>
+            <button>
+                <a href="/Admin/Post/UpdatePost/@item.ID">
+                    Update
+                </a>
+            </button>
+            <button>
+                <a href="/Admin/Post/DeletePost/@item.ID" onclick="AskQuestion('/Admin/Post/DeletePost/',@item.ID)">
+                    Delete
+                </a>
+            </button>
         </div>
     }
 </div>

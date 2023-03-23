@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DTO;
 
@@ -12,7 +13,7 @@ namespace DAL
             using (POSTDATASELFEntities db = new POSTDATASELFEntities())
             {
                 List<Post> list = db.Posts.Where(x=>x.isDeleted==0).ToList();
-                foreach (var item in db.Posts)
+                foreach (var item in list)
                 {
                     PostDTO dto = new PostDTO();
                     dto.ID = item.ID;
@@ -23,6 +24,38 @@ namespace DAL
                 }
             }
             return dtolist;
+        }
+
+        public int AddPost(Post post)
+        {
+            try
+            {
+                using (POSTDATASELFEntities db = new POSTDATASELFEntities())
+                {
+                    db.Posts.Add(post);
+                    db.SaveChanges();
+                    return post.ID;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public void DeletePost(int id, SessionDTO session)
+        {
+            using (POSTDATASELFEntities db = new POSTDATASELFEntities())
+            {
+                Post post = db.Posts.FirstOrDefault(x => x.ID == id);
+                post.isDeleted = 1;
+                post.DeletedDate = DateTime.Now;
+                post.LastUpdateUserID = session.UserID;
+                post.LastUpdateDate = DateTime.Now;
+                db.SaveChanges();
+            }
         }
     }
 }

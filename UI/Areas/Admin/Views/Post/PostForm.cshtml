@@ -1,0 +1,22 @@
+﻿@model DTO.PostDTO
+
+<input type="number" value="@Model.ID" name="ID" hidden />
+<div class="form-group">
+    <label>Title</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })
+    @Html.ValidationMessageFor(x => x.Title)
+</div>
+<div class="form-group">
+    <label>Content</label>
+    @Html.TextBoxFor(x => x.ShortContent, new { @class = "form-control", @placeholder = "Content" })
+    @Html.ValidationMessageFor(x => x.ShortContent)
+</div>
+<div class="form-group">
+    <label>SEO Link</label>
+    @Html.TextBoxFor(x => x.SeoLink, new { @class = "form-control", @placeholder = "Content" })
+    @Html.ValidationMessageFor(x => x.SeoLink)
+</div>
+<div class="card-footer">
+
+    <button class="btn btn-primary" type="submit">Save</button>
+</div>
