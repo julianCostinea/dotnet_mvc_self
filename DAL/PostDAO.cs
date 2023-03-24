@@ -71,5 +71,19 @@ namespace DAL
                 return dto;
             }
         }
+
+        public void UpdatePost(PostDTO model, SessionDTO session)
+        {
+            using (POSTDATASELFEntities db = new POSTDATASELFEntities())
+            {
+                Post post = db.Posts.FirstOrDefault(x => x.ID == model.ID);
+                post.Title = model.Title;
+                post.ShortContent = model.ShortContent;
+                post.SeoLink = model.SeoLink;
+                post.LastUpdateUserID = session.UserID;
+                post.LastUpdateDate = DateTime.Now;
+                db.SaveChanges();
+            }
+        }
     }
 }

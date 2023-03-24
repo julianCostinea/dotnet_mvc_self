@@ -5,6 +5,12 @@
 }
 
 <div>
+    @if (ViewBag.ProcessState == "Wrong")
+    {
+        <div style="color: red">
+            <strong>Username and password not found.</strong>
+        </div>
+    }
     <form method="post">
         @Html.ValidationMessageFor(x => x.Username)
         <input type="text" name="username" placeholder="Username"/>

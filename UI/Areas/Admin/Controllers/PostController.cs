@@ -60,5 +60,26 @@ namespace UI.Areas.Admin.Controllers
             model.isUpdate = true;
             return View(model);
         }
+        
+        [HttpPost]
+        public ActionResult UpdatePost(PostDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                SessionDTO session = (SessionDTO)Session["UserInfo"];
+                if (bll.UpdatePost(model, session))
+                {
+                    ViewBag.ProcessState = "Success";
+                }
+                else
+                {
+                    ViewBag.ProcessState = "Empty";
+                }
+            }
+            model = bll.GetPostWithID(model.ID);
+            return View(model);
+        }
+        
+        //Add categoryIDs with dropdown and have them in posts
     }
 }

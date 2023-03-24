@@ -46,5 +46,12 @@ namespace BLL
         {
             return dao.GetPostWithID(id);
         }
+
+        public bool UpdatePost(PostDTO model, SessionDTO session)
+        {
+            dao.UpdatePost(model, session);
+            LogDAO.AddLog(1, "Post", model.ID, session);
+            return true;
+        }
     }
 }
