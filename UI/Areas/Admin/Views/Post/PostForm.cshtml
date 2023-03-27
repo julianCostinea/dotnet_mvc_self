@@ -1,6 +1,11 @@
 ﻿@model DTO.PostDTO
 
-<input type="number" value="@Model.ID" name="ID" hidden />
+<input type="number" value="@Model.ID" name="ID" hidden/>
+<div class="form-group">
+    <lable>Category</lable>
+    @Html.DropDownList("CategoryID", Model.Categories, "Select Category", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryID)
+</div>
 <div class="form-group">
     <label>Title</label>
     @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })

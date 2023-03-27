@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using System.Web.Mvc;
 
 namespace DTO
 {
@@ -19,5 +20,11 @@ namespace DTO
         public string SeoLink { get; set; }
         
         public bool isUpdate { get; set; } = false;
+        
+        [Required(ErrorMessage = "Please enter a category")]
+        public int CategoryID { get; set; }
+
+        public string CategoryName { get; set; }
+        public IEnumerable<SelectListItem> Categories { get; set; }
     }
 }

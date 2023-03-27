@@ -15,9 +15,10 @@
     @foreach (var item in Model)
     {
         <div>
-            <h3>Post: @item.Title</h3>
+            <h3> <a href="/Admin/Post/PostDetails/@item.ID"> Post: @item.Title </a></h3>
             <p>Content: @item.ShortContent</p>
             <p>Link: @item.SeoLink</p>
+            <p>Category: @item.CategoryName</p>
             <button>
                 <a href="/Admin/Post/UpdatePost/@item.ID">
                     Update

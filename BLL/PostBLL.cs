@@ -25,7 +25,7 @@ namespace BLL
             post.Area2 = false;
             post.Area3 = false;
             post.Notification = false;
-            post.CategoryID = 1;
+            post.CategoryID = model.CategoryID;
             post.SeoLink = model.SeoLink;
             post.LanguageName = "english";
             post.AddDate = DateTime.Now;

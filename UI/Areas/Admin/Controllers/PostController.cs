@@ -23,6 +23,7 @@ namespace UI.Areas.Admin.Controllers
         public ActionResult AddPost()
         {
             PostDTO dto = new PostDTO();
+            dto.Categories = CategoryBLL.GetCategoriesForDropdown();
             return View(dto);
         }
         
@@ -43,6 +44,7 @@ namespace UI.Areas.Admin.Controllers
                     ViewBag.ProcessState = "Empty";
                 }
             }
+            model.Categories = CategoryBLL.GetCategoriesForDropdown();
             return View(model);
         }
         
@@ -57,6 +59,7 @@ namespace UI.Areas.Admin.Controllers
         {
             PostDTO model = new PostDTO();
             model = bll.GetPostWithID(id);
+            model.Categories = CategoryBLL.GetCategoriesForDropdown();
             model.isUpdate = true;
             return View(model);
         }
@@ -64,6 +67,7 @@ namespace UI.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult UpdatePost(PostDTO model)
         {
+            IEnumerable<SelectListItem> selectlist = CategoryBLL.GetCategoriesForDropdown();
             if (ModelState.IsValid)
             {
                 SessionDTO session = (SessionDTO)Session["UserInfo"];
@@ -77,9 +81,15 @@ namespace UI.Areas.Admin.Controllers
                 }
             }
             model = bll.GetPostWithID(model.ID);
+            model.Categories = selectlist;
             return View(model);
         }
         
-        //Add categoryIDs with dropdown and have them in posts
+        public ActionResult PostDetails(int id)
+        {
+            PostDTO model = new PostDTO();
+            model = bll.GetPostWithID(id);
+            return View(model);
+        }
     }
 }

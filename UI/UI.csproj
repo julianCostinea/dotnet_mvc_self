@@ -91,6 +91,7 @@
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Post\AddPost.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\PostDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Post\PostForm.cshtml" />
     <Content Include="Areas\Admin\Views\Post\PostList.cshtml" />
     <Content Include="Areas\Admin\Views\Post\UpdatePost.cshtml" />

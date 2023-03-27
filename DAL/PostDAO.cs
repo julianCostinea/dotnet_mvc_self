@@ -12,12 +12,32 @@ namespace DAL
             List<PostDTO> dtolist = new List<PostDTO>();
             using (POSTDATASELFEntities db = new POSTDATASELFEntities())
             {
-                List<Post> list = db.Posts.Where(x=>x.isDeleted==0).ToList();
-                foreach (var item in list)
+                // List<Post> list = db.Posts.Where(x=>x.isDeleted==0).ToList();
+                // foreach (var item in list)
+                // {
+                //     PostDTO dto = new PostDTO();
+                //     dto.ID = item.ID;
+                //     dto.Title = item.Title;
+                //     dto.ShortContent = item.ShortContent;
+                //     dto.SeoLink = item.SeoLink;
+                //     dtolist.Add(dto);
+                // }
+                var postlist = (from p in db.Posts.Where(x => x.isDeleted == 0)
+                    join c in db.Categories on p.CategoryID equals c.ID
+                    select new PostDTO()
+                    {
+                        ID = p.ID,
+                        Title = p.Title,
+                        CategoryName = c.CategoryName,
+                        ShortContent = p.ShortContent,
+                        SeoLink = p.SeoLink,
+                    }).ToList();
+                foreach (var item in postlist)
                 {
                     PostDTO dto = new PostDTO();
                     dto.ID = item.ID;
                     dto.Title = item.Title;
+                    dto.CategoryName = item.CategoryName;
                     dto.ShortContent = item.ShortContent;
                     dto.SeoLink = item.SeoLink;
                     dtolist.Add(dto);
@@ -78,6 +98,7 @@ namespace DAL
             {
                 Post post = db.Posts.FirstOrDefault(x => x.ID == model.ID);
                 post.Title = model.Title;
+                post.CategoryID = model.CategoryID;
                 post.ShortContent = model.ShortContent;
                 post.SeoLink = model.SeoLink;
                 post.LastUpdateUserID = session.UserID;
