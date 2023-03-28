@@ -20,19 +20,32 @@
         </div>
     }
     @if (ViewBag.ProcessState == "Error")
+    {
+        <div style="color: red">
+            <strong>Error! Something went wrong</strong>
+        </div>
+    }
+    @if (ViewBag.ProcessState == "ImageMissing")
+    {
+        <div style="color: red">
+            <strong>ImageMissing</strong>
+        </div>
+    }
+    @if (ViewBag.ProcessState == "ExtensionError")
         {
             <div style="color: red">
-                <strong>Error! Something went wrong</strong>
+                <strong>ExtensionError</strong>
             </div>
         }
     @if (ViewBag.ProcessState == "Success")
-        {
-            <div style="color: green">
-                <strong>Added</strong>
-            </div>
-        }
+    {
+        <div style="color: green">
+            <strong>Added</strong>
+        </div>
+    }
+
     <div>
-        @using (Html.BeginForm("AddPost", "Post", FormMethod.Post))
+        @using (Html.BeginForm("AddPost", "Post", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {
             @Html.Partial("PostForm")
         }

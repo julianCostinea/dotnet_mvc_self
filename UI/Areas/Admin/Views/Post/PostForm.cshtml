@@ -21,6 +21,16 @@
     @Html.TextBoxFor(x => x.SeoLink, new { @class = "form-control", @placeholder = "Content" })
     @Html.ValidationMessageFor(x => x.SeoLink)
 </div>
+<div class="form-group">
+    <lable>Post Image</lable>
+    <br/>
+    <input type="file" name="PostImage"
+           accept="image/gif, image/jpeg,image/png, image/jpg"
+           onchange="document.getElementById('PostImage').src=window.URL.createObjectURL(this.files[0])"/>
+    <br/>
+    <img id="PostImage" width="300" height="200"/>
+
+</div>
 <div class="card-footer">
 
     <button class="btn btn-primary" type="submit">Save</button>

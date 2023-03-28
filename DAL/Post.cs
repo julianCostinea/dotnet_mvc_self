@@ -34,6 +34,7 @@ namespace DAL
         public bool Area3 { get; set; }
         public bool Notification { get; set; }
         public string LanguageName { get; set; }
+        public string ImagePath { get; set; }
         public System.DateTime AddDate { get; set; }
         public int AddUserID { get; set; }
         public int isDeleted { get; set; }

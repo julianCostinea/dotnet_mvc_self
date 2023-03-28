@@ -140,6 +140,7 @@
           <Property Name="Area1" Type="bit" Nullable="false" />
           <Property Name="Area2" Type="bit" Nullable="false" />
           <Property Name="Area3" Type="bit" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar(max)" Nullable="true" />
           <Property Name="Notification" Type="bit" Nullable="false" />
           <Property Name="LanguageName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AddDate" Type="datetime" Nullable="false" />
@@ -711,6 +712,7 @@
           <Property Name="Area1" Type="Boolean" Nullable="false" />
           <Property Name="Area2" Type="Boolean" Nullable="false" />
           <Property Name="Area3" Type="Boolean" Nullable="false" />
+          <Property Name="ImagePath"  Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Name="Notification" Type="Boolean" Nullable="false" />
           <Property Name="LanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -1304,6 +1306,7 @@
                 <ScalarProperty Name="SeoLink" ColumnName="SeoLink" />
                 <ScalarProperty Name="Slider" ColumnName="Slider" />
                 <ScalarProperty Name="Area1" ColumnName="Area1" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="Area2" ColumnName="Area2" />
                 <ScalarProperty Name="Area3" ColumnName="Area3" />
                 <ScalarProperty Name="Notification" ColumnName="Notification" />

@@ -26,5 +26,8 @@ namespace DTO
 
         public string CategoryName { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
+        [Display(Name = "Post Image")] 
+        public HttpPostedFileBase PostImage { get; set; }
+        public string ImagePath { get; set; }
     }
 }

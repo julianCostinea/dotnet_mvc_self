@@ -28,6 +28,7 @@ namespace BLL
             post.CategoryID = model.CategoryID;
             post.SeoLink = model.SeoLink;
             post.LanguageName = "english";
+            post.ImagePath = model.ImagePath;
             post.AddDate = DateTime.Now;
             post.AddUserID = session.UserID;
             post.LastUpdateUserID = session.UserID;

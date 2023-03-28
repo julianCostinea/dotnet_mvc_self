@@ -29,6 +29,7 @@ namespace DAL
                         ID = p.ID,
                         Title = p.Title,
                         CategoryName = c.CategoryName,
+                        ImagePath = p.ImagePath,
                         ShortContent = p.ShortContent,
                         SeoLink = p.SeoLink,
                     }).ToList();
@@ -40,6 +41,7 @@ namespace DAL
                     dto.CategoryName = item.CategoryName;
                     dto.ShortContent = item.ShortContent;
                     dto.SeoLink = item.SeoLink;
+                    dto.ImagePath = item.ImagePath;
                     dtolist.Add(dto);
                 }
             }

@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 using BLL;
 using DTO;
@@ -28,11 +32,31 @@ namespace UI.Areas.Admin.Controllers
         }
         
         [HttpPost]
+        // [ValidateInput(false)]
         public ActionResult AddPost(PostDTO model)
         {
-            if (ModelState.IsValid)
+            if (model.PostImage == null)
+            {
+                ViewBag.ProcessState = "ImageMissing";
+            }
+            else if (ModelState.IsValid)
             {
                 SessionDTO session = (SessionDTO)Session["UserInfo"];
+                HttpPostedFileBase postedFile = model.PostImage;
+                string fileName = "";
+                string ext = Path.GetExtension(postedFile.FileName);
+                if (ext != ".jpg" && ext != ".png" && ext != ".jpeg")
+                {
+                    ViewBag.ProcessState = "ExtensionError";
+                    model.Categories = CategoryBLL.GetCategoriesForDropdown();
+                    return View(model);
+                }
+                Bitmap PostImage = new Bitmap(postedFile.InputStream);
+                Bitmap resizedImage = new Bitmap(PostImage, 200, 200);
+                fileName = Guid.NewGuid() + postedFile.FileName;
+                string path = Server.MapPath("~/Areas/Admin/Content/PostImages/" + fileName);
+                resizedImage.Save(path);
+                model.ImagePath = fileName;
                 if (bll.AddPost(model, session))
                 {
                     ViewBag.ProcessState = "Success";
