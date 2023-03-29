@@ -103,6 +103,7 @@ namespace DAL
                 post.CategoryID = model.CategoryID;
                 post.ShortContent = model.ShortContent;
                 post.SeoLink = model.SeoLink;
+                post.ImagePath = model.ImagePath;
                 post.LastUpdateUserID = session.UserID;
                 post.LastUpdateDate = DateTime.Now;
                 db.SaveChanges();

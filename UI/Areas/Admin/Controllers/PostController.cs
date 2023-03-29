@@ -91,10 +91,33 @@ namespace UI.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult UpdatePost(PostDTO model)
         {
-            IEnumerable<SelectListItem> selectlist = CategoryBLL.GetCategoriesForDropdown();
+            IEnumerable<SelectListItem> selectList = CategoryBLL.GetCategoriesForDropdown();
             if (ModelState.IsValid)
             {
                 SessionDTO session = (SessionDTO)Session["UserInfo"];
+                if (model.PostImage == null)
+                {
+                    PostDTO previousModel = bll.GetPostWithID(model.ID);
+                    model.ImagePath = previousModel.ImagePath;
+                }
+                else
+                {
+                    HttpPostedFileBase postedFile = model.PostImage;
+                    string fileName = "";
+                    string ext = Path.GetExtension(postedFile.FileName);
+                    if (ext != ".jpg" && ext != ".png" && ext != ".jpeg")
+                    {
+                        ViewBag.ProcessState = General.Messages.ExtensionError;
+                        model.Categories = CategoryBLL.GetCategoriesForDropdown();
+                        return View(model);
+                    }
+                    Bitmap PostImage = new Bitmap(postedFile.InputStream);
+                    Bitmap resizedImage = new Bitmap(PostImage, 200, 200);
+                    fileName = Guid.NewGuid() + postedFile.FileName;
+                    string path = Server.MapPath("~/Areas/Admin/Content/PostImages/" + fileName);
+                    resizedImage.Save(path);
+                    model.ImagePath = fileName;
+                }
                 if (bll.UpdatePost(model, session))
                 {
                     ViewBag.ProcessState = General.Messages.UpdateSuccess;
@@ -105,7 +128,7 @@ namespace UI.Areas.Admin.Controllers
                 }
             }
             model = bll.GetPostWithID(model.ID);
-            model.Categories = selectlist;
+            model.Categories = selectList;
             return View(model);
         }
         

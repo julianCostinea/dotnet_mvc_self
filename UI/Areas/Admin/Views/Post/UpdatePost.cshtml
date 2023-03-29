@@ -14,7 +14,7 @@
 <div>
     @Html.Partial("~/Areas/Admin/Views/Shared/MessageForm.cshtml")
     <div>
-        @using (Html.BeginForm("UpdatePost", "Post", FormMethod.Post))
+        @using (Html.BeginForm("UpdatePost", "Post", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {
             @Html.Partial("PostForm")
         }
