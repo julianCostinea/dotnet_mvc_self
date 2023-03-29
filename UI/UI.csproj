@@ -96,6 +96,7 @@
     <Content Include="Areas\Admin\Views\Post\PostForm.cshtml" />
     <Content Include="Areas\Admin\Views\Post\PostList.cshtml" />
     <Content Include="Areas\Admin\Views\Post\UpdatePost.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\MessageForm.cshtml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

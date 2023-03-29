@@ -13,36 +13,7 @@
 </head>
 <body>
 <div>
-    @if (ViewBag.ProcessState == "Empty")
-    {
-        <div style="color: red">
-            <strong>Error!! Please fill the neccessary areas</strong>
-        </div>
-    }
-    @if (ViewBag.ProcessState == "Error")
-    {
-        <div style="color: red">
-            <strong>Error! Something went wrong</strong>
-        </div>
-    }
-    @if (ViewBag.ProcessState == "ImageMissing")
-    {
-        <div style="color: red">
-            <strong>ImageMissing</strong>
-        </div>
-    }
-    @if (ViewBag.ProcessState == "ExtensionError")
-        {
-            <div style="color: red">
-                <strong>ExtensionError</strong>
-            </div>
-        }
-    @if (ViewBag.ProcessState == "Success")
-    {
-        <div style="color: green">
-            <strong>Added</strong>
-        </div>
-    }
+    @Html.Partial("~/Areas/Admin/Views/Shared/MessageForm.cshtml")
 
     <div>
         @using (Html.BeginForm("AddPost", "Post", FormMethod.Post, new { @enctype = "multipart/form-data" }))

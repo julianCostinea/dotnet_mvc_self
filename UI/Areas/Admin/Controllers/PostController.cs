@@ -37,7 +37,7 @@ namespace UI.Areas.Admin.Controllers
         {
             if (model.PostImage == null)
             {
-                ViewBag.ProcessState = "ImageMissing";
+                ViewBag.ProcessState = General.Messages.ImageMissing;;
             }
             else if (ModelState.IsValid)
             {
@@ -47,7 +47,7 @@ namespace UI.Areas.Admin.Controllers
                 string ext = Path.GetExtension(postedFile.FileName);
                 if (ext != ".jpg" && ext != ".png" && ext != ".jpeg")
                 {
-                    ViewBag.ProcessState = "ExtensionError";
+                    ViewBag.ProcessState = General.Messages.ExtensionError;
                     model.Categories = CategoryBLL.GetCategoriesForDropdown();
                     return View(model);
                 }
@@ -59,13 +59,13 @@ namespace UI.Areas.Admin.Controllers
                 model.ImagePath = fileName;
                 if (bll.AddPost(model, session))
                 {
-                    ViewBag.ProcessState = "Success";
+                    ViewBag.ProcessState = General.Messages.AddSuccess;
                     ModelState.Clear();
                     model = new PostDTO();
                 }
                 else
                 {
-                    ViewBag.ProcessState = "Empty";
+                    ViewBag.ProcessState = General.Messages.EmptyArea;
                 }
             }
             model.Categories = CategoryBLL.GetCategoriesForDropdown();
@@ -97,11 +97,11 @@ namespace UI.Areas.Admin.Controllers
                 SessionDTO session = (SessionDTO)Session["UserInfo"];
                 if (bll.UpdatePost(model, session))
                 {
-                    ViewBag.ProcessState = "Success";
+                    ViewBag.ProcessState = General.Messages.UpdateSuccess;
                 }
                 else
                 {
-                    ViewBag.ProcessState = "Empty";
+                    ViewBag.ProcessState = General.Messages.EmptyArea;
                 }
             }
             model = bll.GetPostWithID(model.ID);

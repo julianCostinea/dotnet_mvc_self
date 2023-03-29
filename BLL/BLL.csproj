@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="CategoryBLL.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="General.cs" />
     <Compile Include="LogBLL.cs" />
     <Compile Include="PostBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

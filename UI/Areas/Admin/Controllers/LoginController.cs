@@ -39,7 +39,8 @@ namespace UI.Areas.Admin.Controllers
                     LogBLL.AddLog(1, "Login", 12, session);
                     return RedirectToAction("Index", "Post");
                 }
-                ViewBag.ProcessState = "Wrong";
+
+                ViewBag.ProcessState = General.Messages.GeneralError;
 
                 return View(model);
             }

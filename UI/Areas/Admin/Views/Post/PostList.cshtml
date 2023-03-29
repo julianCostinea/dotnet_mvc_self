@@ -21,10 +21,9 @@
             <p>Content: @item.ShortContent</p>
             <p>Link: @item.SeoLink</p>
             <p>Category: @item.CategoryName</p>
-
             <br/>
-            <p>Path: @item.ImagePath</p>
-
+            <img src="~/Areas/Admin/Content/PostImages/@item.ImagePath" width="200" height="200"/>
+            <br/>
             <button>
                 <a href="/Admin/Post/UpdatePost/@item.ID">
                     Update
